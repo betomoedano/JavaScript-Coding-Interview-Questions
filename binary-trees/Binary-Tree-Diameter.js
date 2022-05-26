@@ -1,4 +1,3 @@
-Write a function that takes in a Binary Tree and returns its diameter. The diameter of a binary tree is defines as the length of its longes path, even if the path does'n pass through the root of the tree
 
 /////////////////////////////////////////////////////////////////////////////////////
 // Binary Tree Diamaeter
