@@ -1,38 +1,59 @@
 //////////////////////////////////////////////////////
 // SEARCH IN SORTED MATRIX
 
-// time O(h + log(w));
+// solution 1
+// time O(h*log(w))
+// space O(1)
+
+// function searchInSortedMatrix(matrix, target) {
+//     const result = [-1, -1];
+//     let hasTarget = false;
+  
+//     for (let row = 0; row < matrix.length; row++) {
+//       hasTarget = binarySearch(matrix[row], target);
+//       if (hasTarget[0]) {
+//         result[0] = row;
+//         result[1] = hasTarget[1];
+//         return result;
+//       }
+//     }
+//     return result;
+//   }
+  
+//   function binarySearch(row, target) {
+//     let left = 0;
+//     let right = row.length - 1;
+//     while (left <= right) {
+//       let middle = Math.floor((left + right) / 2);
+//       if (row[middle] === target) {
+//         return [true, middle];
+//       }
+//       if (row[middle] < target) {
+//         left = middle + 1;
+//       } else if (row[middle] > target) {
+//         right = middle - 1;
+//       }
+//     }
+//     return [false, -1];
+//   }
+
+// solution 2
 function searchInSortedMatrix(matrix, target) {
-    const result = [-1, -1];
-    let hasTarget = false;
-  
-    for (let row = 0; row < matrix.length; row++) {
-      hasTarget = binarySearch(matrix[row], target);
-      if (hasTarget[0]) {
-        result[0] = row;
-        result[1] = hasTarget[1];
-        return result;
-      }
+
+    let row = 0;
+    let col = matrix[0].length - 1;
+
+    while(row < matrix.length && col >= 0) {
+        if(matrix[row][col] > target) {
+            col--;
+        } else if(matrix[row][col] < target) {
+            row++;
+        } else {
+            return [row, col];
+        }
     }
-    return result;
-  }
-  
-  function binarySearch(row, target) {
-    let left = 0;
-    let right = row.length - 1;
-    while (left <= right) {
-      let middle = Math.floor((left + right) / 2);
-      if (row[middle] === target) {
-        return [true, middle];
-      }
-      if (row[middle] < target) {
-        left = middle + 1;
-      } else if (row[middle] > target) {
-        right = middle - 1;
-      }
-    }
-    return [false, -1];
-  }
+    return [-1, -1];
+}
   
   const matrix = [
     [1, 4, 7, 12, 15, 1000],
