@@ -38,6 +38,10 @@
 //   }
 
 // solution 2
+
+// time O(n+m)
+// space O(1)
+
 function searchInSortedMatrix(matrix, target) {
 
     let row = 0;
