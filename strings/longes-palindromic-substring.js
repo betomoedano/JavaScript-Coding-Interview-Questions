@@ -1,4 +1,6 @@
 // longes palindromic substring
+// time O(n^2)
+// space O(n) since we have to storage the final substring
 
 function longestPalindromicSubstring(string) {
     let currentLongest = [0, 1];
