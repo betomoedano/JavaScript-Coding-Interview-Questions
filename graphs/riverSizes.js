@@ -1,4 +1,5 @@
 // breadth-first search to find islands
+// O(wh) time | O(wh) space
 
 function riverSizes(matrix) {
   const sizes = [];
