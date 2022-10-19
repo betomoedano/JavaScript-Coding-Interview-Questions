@@ -1,3 +1,6 @@
+// O(n) time
+// O(1) space
+// difficulty MEDIUM
 var maxSubArray = function (nums) {
   let maxSub = nums[0];
   let currentSum = 0;
