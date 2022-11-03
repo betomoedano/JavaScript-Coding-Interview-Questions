@@ -1,31 +1,28 @@
-// time O(n^2) wors case
+// Best O(n) time
+// Time O(n^2) -- because we need to iterate multiple times
+// Space O(1)
+function bubbleSort(array) {
+  let isSorted = false;
+  let iteration = 0;
 
-function bubbleSort(numbers) {
-    let isSorted = false;
-    let counter = 0;
-  
-    while (!isSorted) {
-      isSorted = true;
-      for (let i = 0; i < numbers.length - 1; i++) {
-        if (numbers[i] > numbers[i + 1]) {
-          swap(i, i + 1, numbers);
-          isSorted = false;
-        }
+  while (!isSorted) {
+    isSorted = true;
+    for (let i = 0; i < array.length - 1 - iteration; i++) {
+      if (array[i] > array[i + 1]) {
+        swap(i, i + 1, array);
+        isSorted = false;
       }
-      counter++;
-      console.log(counter);
     }
-    return numbers;
+    iteration++;
   }
-  
-  function swap(left, right, numbers) {
-    const temp = numbers[left];
-    numbers[left] = numbers[right];
-    numbers[right] = temp;
-    return;
-  }
-  
-  const nums = [1, 3, 4, 5, 67, 4, 2];
-  console.log(bubbleSort(nums));
-  
-  
+
+  return array;
+}
+
+function swap(a, b, array) {
+  const temp = array[a];
+  array[a] = array[b];
+  array[b] = temp;
+}
+const nums = [1, 3, 4, 5, 67, 4, 2];
+console.log(bubbleSort(nums));
