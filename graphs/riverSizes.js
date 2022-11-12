@@ -1,3 +1,47 @@
+// MY SOLUTION !!!
+// time O(wh)
+// space O(wh)
+/*
+function riverSizes(matrix) {
+  const result = [];
+  for (let row = 0; row < matrix.length; row++) {
+    for (let col = 0; col < matrix[row].length; col++) {
+      if(matrix[row][col] !== 1) continue;
+      const currentRiverSize = getRiverSize(matrix, row, col);
+        result.push(currentRiverSize);
+    }
+  }
+  return result;
+}
+
+function getRiverSize(matrix, row, col) {
+  const stack = [[row,col]];
+  let sizeCounter = 0;
+
+  while (stack.length) {
+    const currentRiver = stack.pop();
+    const [currentRow, currentCol] = currentRiver;
+    if(matrix[currentRow][currentCol] === 0) continue;
+    matrix[currentRow][currentCol] = 0;
+    sizeCounter++;
+    const neighbors = getNeighbors(matrix, currentRow, currentCol);
+    for (const neighbor of neighbors) {
+      stack.push(neighbor);
+    }
+  }
+  return sizeCounter;
+}
+
+function getNeighbors(matrix, row, col) {
+  const neighbors = [];
+  if(row - 1 >= 0) neighbors.push([row - 1, col]);
+  if(row + 1 < matrix.length) neighbors.push([row + 1, col]);
+  if(col - 1 >= 0) neighbors.push([row, col - 1]);
+  if(col + 1 < matrix[row].length) neighbors.push([row, col + 1]);
+  return neighbors;
+}
+
+*/
 // breadth-first search to find islands
 // O(wh) time | O(wh) space
 
