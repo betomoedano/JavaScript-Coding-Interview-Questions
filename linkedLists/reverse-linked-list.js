@@ -27,3 +27,19 @@ function reverseLinkedList(head) {
   }
   return currentNode;
 }
+
+// SIMILAR SOLUTION - LESS CODE
+
+function reverseLinkedList(head) {
+  if (head.next === null) return head;
+  let prevNode = null;
+  let currentNode = head;
+
+  while (currentNode !== null) {
+    const nextNode = currentNode.next;
+    currentNode.next = prevNode;
+    prevNode = currentNode;
+    currentNode = nextNode;
+  }
+  return prevNode;
+}
