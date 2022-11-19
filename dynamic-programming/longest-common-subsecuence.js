@@ -1,3 +1,26 @@
+// with matrix
+// Time O(nm)
+// Space O(nm)
+var longestCommonSubsequence = function (text1, text2) {
+  const lcs = [];
+
+  for (let i = 0; i < text1.length + 1; i++) {
+    const row = new Array(text2.length + 1).fill(0);
+    lcs.push(row);
+  }
+
+  for (let i = 1; i < text1.length + 1; i++) {
+    for (let j = 1; j < text2.length + 1; j++) {
+      if (text1[i - 1] === text2[j - 1]) {
+        lcs[i][j] = lcs[i - 1][j - 1] + 1;
+      } else {
+        lcs[i][j] = Math.max(lcs[i - 1][j], lcs[i][j - 1]);
+      }
+    }
+  }
+  return lcs[text1.length][text2.length];
+};
+
 // Add memoization
 // Time O(mn)
 // Space O(nm)
