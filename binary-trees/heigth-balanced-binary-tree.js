@@ -1,5 +1,9 @@
 // HEIGHT BALANCED BINARY TREE
+// Time O(n) time - where n is the total of nodes in the tree
+// Space O(h) where h is the height of the tree - average case and the height will determine the number of recursive calls
+// Space O(n) worse case
 
+// This is an input class. Do not edit.
 class BinaryTree {
   constructor(value) {
     this.value = value;
@@ -9,29 +13,29 @@ class BinaryTree {
 }
 
 class TreeInfo {
-  constructor(isBalanced, heigth) {
+  constructor(isBalanced, height) {
     this.isBalanced = isBalanced;
-    this.heigth = heigth;
+    this.height = height;
   }
 }
 
 function heightBalancedBinaryTree(tree) {
-  const treeInfo = getTreeInfo(tree);
-  return treeInfo.isBalanced;
+  return isBalancedHelper(tree).isBalanced;
 }
 
-function getTreeInfo(node) {
+function isBalancedHelper(node) {
   if (node === null) return new TreeInfo(true, -1);
 
-  const leftSubtreeInfo = getTreeInfo(node.left);
-  const rightSubtreeInfo = getTreeInfo(node.right);
+  const leftInfo = isBalancedHelper(node.left);
+  const rightInfo = isBalancedHelper(node.right);
 
   const isBalanced =
-    leftSubtreeInfo.isBalanced &&
-    rightSubtreeInfo.isBalanced &&
-    Math.abs(leftSubtreeInfo.heigth - rightSubtreeInfo.heigth) <= 1;
-  const heigth = Math.max(leftSubtreeInfo.heigth, rightSubtreeInfo.heigth) + 1;
-  return new TreeInfo(isBalanced, heigth);
+    leftInfo.isBalanced &&
+    rightInfo.isBalanced &&
+    Math.abs(leftInfo.height - rightInfo.height) <= 1;
+  const height = 1 + Math.max(leftInfo.height, rightInfo.height);
+
+  return new TreeInfo(isBalanced, height);
 }
 
 const root = new BinaryTree(1);
