@@ -1,3 +1,4 @@
+// hard
 // Write a function that takes in the head of a Singly Linked List and an integer
 // , shifts the list in place (i.e., doesn't create a brand new
 // list) by k positions, and returns its new head.
