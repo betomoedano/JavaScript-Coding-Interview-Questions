@@ -24,4 +24,4 @@ function removeMiddleNode(list, valueToRemove) {
   return list;
 }
 
-console.log(removeMiddleNode(myLinkedList, "C"));
+console.log(removeMiddleNode(myLinkedList, "B"));
