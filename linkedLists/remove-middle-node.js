@@ -25,3 +25,4 @@ function removeMiddleNode(list, valueToRemove) {
 }
 
 console.log(removeMiddleNode(myLinkedList, "B"));
+// hey
