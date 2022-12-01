@@ -1,0 +1,15 @@
+{
+  "name": "coding-questions",
+  "version": "1.0.0",
+  "description": "This is a compilation of coding questions with optimal solutions",
+  "main": "index.js",
+  "repository": "https://github.com/betomoedano/coding-questions.git",
+  "author": "Alberto Moedano",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1"
+  }
+}
