@@ -3,7 +3,44 @@
  *
  * The first part of this file is a full implementation
  * using a priority queue and graph class
+ * resources => https://medium.com/@adriennetjohnson/a-walkthrough-of-dijkstras-algorithm-in-javascript-e94b74192026
  */
+
+class PriorityQueue {
+  constructor() {
+    this.collection = [];
+  }
+
+  // Time O(n)
+  enqueue(element) {
+    const [value, weight] = element;
+    if (this.isEmpty()) {
+      this.collection.push(element);
+    } else {
+      let added = false;
+      for (let i = 1; i <= this.collection; i++) {
+        const currentWeight = this.collection[i - 1][1];
+        if (weight < currentWeight) {
+          this.collection.splice(i - 1, 0, element);
+          added = true;
+          break;
+        }
+      }
+      // if we did't add the element, means that the element
+      // has a greater weight
+      if (!added) {
+        this.collection.push(element);
+      }
+    }
+  }
+  dequeue() {
+    return this.collection.shift();
+  }
+
+  isEmpty() {
+    return this.collection.length === 0;
+  }
+}
 
 class Graph {
   constructor() {
@@ -63,50 +100,22 @@ class Graph {
 }
 
 let map = new Graph();
-map.addNode("Fullstack");
-map.addNode("Starbucks");
-map.addNode("Dig Inn");
-map.addEdge("Fullstack", "Starbucks", 5);
-map.addEdge("Dig Inn", "Starbucks", 3);
-map.addEdge("Fullstack", "Dig Inn", 7);
-console.table(map);
-console.log(map.adjacencyList);
+map.addnode("home");
+map.addnode("airport");
+map.addnode("publix");
+map.addnode("google");
+map.addnode("apple");
+map.addnode("microsoft");
+map.addedge("home", "publix", 2);
+map.addedge("home", "apple", 20);
+map.addedge("home", "airport", 30);
+map.addedge("airport", "apple", 20);
+map.addedge("publix", "apple", 5);
+map.addedge("publix", "google", 5);
+map.addedge("apple", "microsoft", 20);
+map.addedge("google", "microsoft", 20);
+console.table(map.findpathwithdijkstra("home", "microsoft"));
 
-class PriorityQueue {
-  constructor() {
-    this.collection = [];
-  }
-
-  // Time O(n)
-  enqueue(element) {
-    const [value, weight] = element;
-    if (this.isEmpty()) {
-      this.collection.push(element);
-    } else {
-      let added = false;
-      for (let i = 1; i <= this.collection; i++) {
-        const currentWeight = this.collection[i - 1][1];
-        if (weight < currentWeight) {
-          this.collection.splice(i - 1, 0, element);
-          added = true;
-          break;
-        }
-      }
-      // if we did't add the element, means that the element
-      // has a greater weight
-      if (!added) {
-        this.collection.push(element);
-      }
-    }
-  }
-  dequeue() {
-    return this.collection.shift();
-  }
-
-  isEmpty() {
-    return this.collection.length === 0;
-  }
-}
 ///////////////////////////////////////////
 
 function dijkstrasAlgorithm(start, edges) {
