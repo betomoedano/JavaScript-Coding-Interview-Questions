@@ -20,6 +20,46 @@ class Graph {
     this.adjacencyList[from].push({ node: to, weight });
     this.adjacencyList[to].push({ node: from, weight });
   }
+
+  findPathWithDijkstra(startNode, endNode) {
+    let times = {};
+    let backtrace = {};
+    let pq = new PriorityQueue();
+
+    times[startNode] = 0;
+
+    this.nodes.forEach((node) => {
+      if (node !== startNode) {
+        times[node] = Infinity;
+      }
+    });
+    //      [startingNode, Weight]
+    pq.enqueue([startNode, 0]);
+
+    while (!pq.isEmpty()) {
+      let shortestStep = pq.dequeue();
+      let currentNode = shortestStep[0];
+
+      this.adjacencyList[currentNode].forEach((neighbor) => {
+        let time = times[currentNode] + neighbor.weight;
+        if (time < times[neighbor.node]) {
+          times[neighbor.node] = time;
+          backtrace[neighbor.node] = currentNode;
+          pq.enqueue([neighbor.node, time]);
+        }
+      });
+    }
+
+    let path = [endNode];
+    let lastStep = endNode;
+
+    while (lastStep !== startNode) {
+      path.unshift(backtrace[lastStep]);
+      lastStep = backtrace[lastStep];
+    }
+
+    return `Path is ${path} and time is ${times[endNode]}`;
+  }
 }
 
 let map = new Graph();
@@ -31,6 +71,43 @@ map.addEdge("Dig Inn", "Starbucks", 3);
 map.addEdge("Fullstack", "Dig Inn", 7);
 console.table(map);
 console.log(map.adjacencyList);
+
+class PriorityQueue {
+  constructor() {
+    this.collection = [];
+  }
+
+  // Time O(n)
+  enqueue(element) {
+    const [value, weight] = element;
+    if (this.isEmpty()) {
+      this.collection.push(element);
+    } else {
+      let added = false;
+      for (let i = 1; i <= this.collection; i++) {
+        const currentWeight = this.collection[i - 1][1];
+        if (weight < currentWeight) {
+          this.collection.splice(i - 1, 0, element);
+          added = true;
+          break;
+        }
+      }
+      // if we did't add the element, means that the element
+      // has a greater weight
+      if (!added) {
+        this.collection.push(element);
+      }
+    }
+  }
+  dequeue() {
+    return this.collection.shift();
+  }
+
+  isEmpty() {
+    return this.collection.length === 0;
+  }
+}
+///////////////////////////////////////////
 
 function dijkstrasAlgorithm(start, edges) {
   const numberOfVertices = edges.length;
