@@ -1,3 +1,37 @@
+/**
+ * Dijkstra's Algorithm
+ *
+ * The first part of this file is a full implementation
+ * using a priority queue and graph class
+ */
+
+class Graph {
+  constructor() {
+    this.nodes = [];
+    this.adjacencyList = {};
+  }
+
+  addNode(node) {
+    this.nodes.push(node);
+    this.adjacencyList[node] = [];
+  }
+
+  addEdge(from, to, weight) {
+    this.adjacencyList[from].push({ node: to, weight });
+    this.adjacencyList[to].push({ node: from, weight });
+  }
+}
+
+let map = new Graph();
+map.addNode("Fullstack");
+map.addNode("Starbucks");
+map.addNode("Dig Inn");
+map.addEdge("Fullstack", "Starbucks", 5);
+map.addEdge("Dig Inn", "Starbucks", 3);
+map.addEdge("Fullstack", "Dig Inn", 7);
+console.table(map);
+console.log(map.adjacencyList);
+
 function dijkstrasAlgorithm(start, edges) {
   const numberOfVertices = edges.length;
 
