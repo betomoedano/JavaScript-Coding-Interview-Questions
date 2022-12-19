@@ -1,4 +1,4 @@
-const balancedBrackets = require("./balanced-brackets");
+const balancedBrackets = require("../balanced-brackets");
 test("balanced braquets [()] returns true", () => {
   expect(balancedBrackets("{([])}")).toBe(true);
 });
