@@ -10,3 +10,5 @@ function zeroSumSubarray(nums) {
   }
   return false;
 }
+
+module.exports = zeroSumSubarray;
