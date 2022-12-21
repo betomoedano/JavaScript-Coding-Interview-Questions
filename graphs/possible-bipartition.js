@@ -22,6 +22,8 @@ var possibleBipartition = function (n, dislikes) {
   return true;
 };
 
+module.exports = possibleBipartition;
+
 function bfs(source, adjList, colors) {
   const queue = [source];
   colors[source - 1] = 0;
