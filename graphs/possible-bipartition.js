@@ -3,6 +3,9 @@
  * @param {number[][]} dislikes
  * @return {boolean}
  */
+// Time O(n + e)
+// Space O(n + e)
+// BFS approach
 var possibleBipartition = function (n, dislikes) {
   if (dislikes.length === 0) return true;
   const adjList = createAdjacencyList(dislikes);
