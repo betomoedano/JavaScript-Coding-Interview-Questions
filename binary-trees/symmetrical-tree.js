@@ -30,3 +30,20 @@ function symmetricalTree(tree) {
   }
   return true;
 }
+
+// recursive solution
+function symmetricalTree(tree) {
+  return checkSymmetrical(tree.left, tree.right);
+}
+
+// Time O(n)
+// Space O(h) - where h is the height of the tree
+function checkSymmetrical(left, right) {
+  if (left !== null && right !== null && left.value === right.value) {
+    return (
+      checkSymmetrical(left.left, right.right) &&
+      checkSymmetrical(left.right, right.left)
+    );
+  }
+  return left === right;
+}
