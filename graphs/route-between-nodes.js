@@ -18,11 +18,11 @@ function routeBetweenNodes(graph, origin, destination) {
   return false;
 }
 
+module.exports = routeBetweenNodes;
+
 const graph = {
   1: [2],
   2: [3, 4],
   3: [4],
   4: [],
 };
-
-console.log(routeBetweenNodes(graph, 1, 4));
