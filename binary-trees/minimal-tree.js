@@ -4,3 +4,27 @@
  * write an algorithm to create a binary search tree (BST) with
  * minimal height
  */
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+function createMinimalBST(arr) {
+  return createMinimalBSTHelper(arr, 0, arr.length - 1);
+}
+
+function createMinimalBSTHelper(arr, start, end) {
+  if (end < start) return;
+  const middle = Math.floor((start + end) / 2);
+
+  const node = new Node(arr[middle]);
+  node.left(createMinimalBSTHelper(arr, 0, middle - 1));
+  node.right(createMinimalBSTHelper(arr, middle + 1, arr.length - 1));
+  return node;
+}
+
+const array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
