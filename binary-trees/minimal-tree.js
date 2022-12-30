@@ -31,4 +31,4 @@ function createMinimalBSTHelper(arr, start, end) {
   return node;
 }
 
-module.exports = createMinimalBST;
+module.exports = { Node, createMinimalBST };
