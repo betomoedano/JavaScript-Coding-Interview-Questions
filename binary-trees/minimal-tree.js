@@ -3,6 +3,9 @@
  * Given a sorted (increasing order) array with unique integer values,
  * write an algorithm to create a binary search tree (BST) with
  * minimal height
+ *
+ * Time O(n) - where n is the length of the input array
+ * Space O(n)
  */
 
 class Node {
