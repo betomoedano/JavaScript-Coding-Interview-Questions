@@ -7,6 +7,32 @@ class LinkedList {
 }
 
 /**
+ * Optimal Solution
+ * Time O(n + m) - where n and m are the length of the linked lists
+ * Space O(1)
+ */
+
+function mergingLinkedLists(linkedListOne, linkedListTwo) {
+  let currentNodeOne = linkedListOne;
+  let currentNodeTwo = linkedListTwo;
+
+  while (currentNodeOne !== currentNodeTwo) {
+    if (currentNodeOne === null) {
+      currentNodeOne = linkedListTwo;
+    } else {
+      currentNodeOne = currentNodeOne.next;
+    }
+
+    if (currentNodeTwo === null) {
+      currentNodeTwo = linkedListOne;
+    } else {
+      currentNodeTwo = currentNodeTwo.next;
+    }
+  }
+  return currentNodeOne;
+}
+
+/**
  *
  * @param {*} linkedListOne
  * @param {*} linkedListTwo
