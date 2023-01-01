@@ -1,4 +1,42 @@
-// Time O(n)
+/**
+ *
+ * @param {string} stringOne
+ * @param {string} stringTwo
+ * @returns {bool}
+ * Optimal Solution
+ * Time O(n) - Space O(1) - where n is the length of the shorter string
+ */
+
+function oneEdit(stringOne, stringTwo) {
+  const lengthOne = stringOne.length;
+  const lengthTwo = stringTwo.length;
+  if (Math.abs(lengthOne - lengthTwo) > 1) return false;
+
+  let madeEdit = false;
+  let indexOne = 0;
+  let indexTwo = 0;
+
+  while (indexOne < lengthOne && indexTwo < lengthTwo) {
+    if (stringOne[indexOne] !== stringTwo[indexTwo]) {
+      if (madeEdit) return false;
+      madeEdit = true;
+      if (lengthOne > lengthTwo) {
+        indexOne++;
+      } else if (lengthTwo > lengthOne) {
+        indexTwo++;
+      } else {
+        indexTwo++;
+        indexOne++;
+      }
+    } else {
+      indexOne++;
+      indexTwo++;
+    }
+  }
+  return true;
+}
+
+// Time O(n + m)
 // Space  O(n)
 function oneEdit(stringOne, stringTwo) {
   const lengthDiff = Math.abs(stringOne.length - stringTwo.length);
