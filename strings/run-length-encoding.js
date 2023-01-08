@@ -18,3 +18,24 @@ function encoding(string) {
 
 const string = "aaabbccdddddddddddddddddddddddddASLDKFJasdadskf";
 console.log(encoding(string));
+
+// algoexpert variant
+
+// Time O(n)
+// Space O(n)
+//
+function runLengthEncoding(string) {
+  const runLE = [];
+
+  for (let i = 0; i < string.length; i++) {
+    let currCount = 1;
+    while (string[i] === string[i + 1] && currCount < 9) {
+      currCount += 1;
+      i++;
+    }
+    runLE.push(currCount);
+    runLE.push(string[i]);
+    currCount = 0;
+  }
+  return runLE.join("");
+}
