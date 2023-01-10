@@ -44,3 +44,24 @@ function smallestDifference(arrayOne, arrayTwo) {
   console.log(posibleResult);
   return posibleResult;
 }
+
+//
+// Brute force solution
+// Time O(n^2)
+// Space O(1)
+//
+function smallestDifference(arrayOne, arrayTwo) {
+  let smallestDiff = Infinity;
+  let result = [];
+
+  for (let i = 0; i < arrayOne.length; i++) {
+    for (let j = 0; j < arrayTwo.length; j++) {
+      const currDiff = Math.abs(arrayOne[i] - arrayTwo[j]);
+      if (smallestDiff > currDiff) {
+        smallestDiff = currDiff;
+        result = [arrayOne[i], arrayTwo[j]];
+      }
+    }
+  }
+  return result;
+}
