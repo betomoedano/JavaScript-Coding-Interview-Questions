@@ -13,6 +13,29 @@
 // Output: 8
 // Explanation: The figure above represents the given tree where red vertices have an apple. One optimal path to collect all apples is shown by the green arrows.
 
+// Intuition
+// This solution uses depth-first search (DFS) to traverse the tree, starting from the root node (vertex 0). The DFS function takes in the current node and its parent, and returns the minimum time required to collect all apples.
+
+// Approach
+// First we check the case in which there are no apples in the tree using a for loop, as soon as we find an apple we break from the for loop. Otherwise, if we get to the last index, that means there are no apples so we return 0.
+// If we have apples on the tree, we create an adjacency list to represent the tree, which is created using the edges array.
+// The DFS function visits each node and its children and checks if the current node of any of its children have an apple. If so, it adds 2 seconds to the time required to visit this node. The function also keeps track of the parent node to avoid visiting the same node again.
+// At the end the DFS function is called at the root node (vertex 0)
+// Important notes:
+// The reason we substract 2 seconds at the end of the DFS function, is because when we return at the root node, we don't need to spend any time to collect apples there, as we've already collected all the apples in the tree.
+// Another way to think of it is that when the DFS returns from the last child to the root node, it is not necessary to go back to the root node, it is already there and it doesn't have an apple, so we don't need to spend 2 seconds.
+// Complexity
+// This solution has a time complexity of O(n) and a space complexity of O(n), where n is the number of vertices in the tree.
+
+// Time complexity:
+// O(n)O(n)O(n)
+
+// Space complexity:
+// O(n)O(n)O(n)
+
+// Its worth noting that if there are no apples in the tree the space complexity would be: O(1)O(1)O(1) (best case)
+
+// Code
 /**
  * @param {number} n
  * @param {number[][]} edges
