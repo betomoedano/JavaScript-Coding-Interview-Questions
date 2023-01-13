@@ -1,4 +1,4 @@
-# Algorithms and Data Structures Coding Interview Questions 
+![Frame 1173](https://user-images.githubusercontent.com/43630417/212415396-72a6d870-4a1a-4bf5-a9e1-a29dee2dce5e.png)
 
 This repository contains various coding interview questions related to algorithms and data structures. The questions are written in JavaScript, but please feel free to add solutions in your preferred language. The questions are designed to test the candidate's understanding and implementation of various concepts related to algorithms and data structures.
 
