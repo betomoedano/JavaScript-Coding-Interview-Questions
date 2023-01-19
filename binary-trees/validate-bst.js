@@ -21,7 +21,7 @@ function validateBstHelper(tree, minValue, maxValue) {
 //
 // SOLUTION 2
 // This solution is iterative, same time complexity using DFS approach
-// Time O(n)
+// Time O(n) - where n is the number of nodes
 // Space O(d) - where d is the depth of the tree
 //
 function validateBst(root) {
@@ -33,7 +33,6 @@ function validateBst(root) {
   while (stack.length > 0) {
     const currentNode = stack.pop();
     if (
-      currentNode === null ||
       currentNode.value < currentNode.min ||
       currentNode.value >= currentNode.max
     )
@@ -43,7 +42,7 @@ function validateBst(root) {
       currentNode.left.max = currentNode.value;
       stack.push(currentNode.left);
     }
-    if (currentNode.right !== null) {
+    if (currentNode.right) {
       stack.push(currentNode.right);
       currentNode.right.min = currentNode.value;
       currentNode.right.max = currentNode.max;
