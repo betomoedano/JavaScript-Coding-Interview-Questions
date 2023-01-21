@@ -15,7 +15,5 @@ function classPhotos(redShirtHeights, blueShirtHeights) {
   }
   return true;
 }
-const red = [5, 8, 1, 3, 4];
-const blue = [6, 9, 2, 4, 5];
 
 module.exports = classPhotos;
