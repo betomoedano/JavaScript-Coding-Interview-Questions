@@ -33,6 +33,8 @@
 /**
  * @param {number[]} nums
  * @return {number[][]}
+ * O(2^n * n) time
+ * O(2^n * n) space
  */
 const findSubsequences = (originalArray) => {
   const nonDecreasingSubsequences = [];
