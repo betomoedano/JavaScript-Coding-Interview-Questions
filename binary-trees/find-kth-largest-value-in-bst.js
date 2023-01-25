@@ -1,4 +1,3 @@
-// This is an input class. Do not edit.
 class BST {
   constructor(value) {
     this.value = value;
@@ -22,15 +21,9 @@ function findKthHelper(tree, array) {
   return array;
 }
 
+////////////////////////////
 // solution 2
-// This is an input class. Do not edit.
-class BST {
-  constructor(value) {
-    this.value = value;
-    this.left = null;
-    this.right = null;
-  }
-}
+///////////////////////////
 
 class TreeInfo {
   constructor(numberOfNodesVisited, latestVisitedValue) {
