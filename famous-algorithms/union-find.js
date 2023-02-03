@@ -1,8 +1,3 @@
-// Do not edit the class below except for
-// the constructor and the createSet, find,
-// and union methods. Feel free to add new
-// properties and methods to the class.
-
 class UnionFind {
   constructor() {
     this.parents = {};
@@ -35,6 +30,53 @@ class UnionFind {
       const valueTwoRoot = this.find(valueTwo);
 
       this.parents[valueTwoRoot] = valueOneRoot;
+    }
+  }
+}
+
+//
+// SOLUTION 2
+// OPTIMAL SOLUTION
+//
+class UnionFind {
+  constructor() {
+    this.parents = {};
+    this.ranks = {};
+  }
+
+  createSet(value) {
+    this.parents[value] = value;
+    this.ranks[value] = 0;
+  }
+
+  // O(alpha(n)), approximately O(1) time and space
+  // where n is the total numbe of values
+  find(value) {
+    if (!(value in this.parents)) return null;
+
+    // if the parent is different to the value
+    // find parent calling find recursively
+    if (value !== this.parents[value]) {
+      this.parents[value] = this.find(this.parents[value]);
+    }
+
+    return this.parents[value];
+  }
+
+  // O(alpha(n)), approximately O(1) time and space
+  // where n is the total numbe of values
+  union(valueOne, valueTwo) {
+    if (!(valueOne in this.parents) || !(valueTwo in this.parents)) return;
+
+    const valueOneRoot = this.find(valueOne);
+    const valueTwoRoot = this.find(valueTwo);
+    if (this.ranks[valueOneRoot] < this.ranks[valueTwoRoot]) {
+      this.parents[valueOneRoot] = valueTwoRoot;
+    } else if (this.ranks[valueOneRoot] > this.ranks[valueTwoRoot]) {
+      this.parents[valueTwoRoot] = valueOneRoot;
+    } else {
+      this.parents[valueTwoRoot] = valueOneRoot;
+      this.ranks[valueOneRoot] += 1;
     }
   }
 }
