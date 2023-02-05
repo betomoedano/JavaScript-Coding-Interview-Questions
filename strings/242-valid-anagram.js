@@ -6,7 +6,7 @@
  * Space O(1) because t consist of lowecase english letters (23)
  */
 var isAnagram = function (s, t) {
-  if (t >= s.length) return false;
+  if (t.length > s.length) return false;
   const freq = {};
 
   for (const char of t) {
@@ -22,4 +22,21 @@ var isAnagram = function (s, t) {
     }
   }
   return Object.entries(freq).length === 0 ? true : false;
+};
+
+/**
+ * Solution 2
+ * Time O(n log n) because we are sorting the strings. Where n is the number of chars in t
+ * Space O(1) we are not using any extra space
+ */
+var isAnagram = function (s, t) {
+  if (t.length !== s.length) return false;
+  const one = s.split("").sort();
+  const two = t.split("").sort();
+
+  for (let i = 0; i < two.length; i++) {
+    if (one[i] !== two[i]) return false;
+  }
+
+  return true;
 };
